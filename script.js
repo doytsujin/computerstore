@@ -32,24 +32,27 @@ const insertOptions = () => {
 insertOptions();
 
 const insertComputerData = (data) => {
-  const { id, title, description, specs, price, stock, active, image } = data;
-  document.querySelector(".h1-big").textContent = title;
-  document
-    .querySelector(".computer-image")
-    .setAttribute(
-      "src",
-      `https://noroff-komputer-store-api.herokuapp.com/${image}`
-    );
-  document.querySelector(".description").textContent = description;
-  document.querySelector(".price").textContent = `${price} NOK`;
-  const ulArray = document.querySelector(".specs").children;
+  const titleEl = document.querySelector(".h1-big");
+  const imgEl = document.querySelector(".computer-image");
+  const descriptionEl = document.querySelector(".description");
+  const priceEl = document.querySelector(".price");
+  const liArray = document.querySelector(".specs").children;
+
+  const { title, description, specs, price, image } = data;
+
+  titleEl.textContent = title;
+  imgEl.setAttribute("src",`https://noroff-komputer-store-api.herokuapp.com/${image}`);
+  descriptionEl.textContent = description;
+  priceEl.textContent = `${price} NOK`;
   specs.some((spec, index) => {
     if (index <= 3) {
-      ulArray[index].textContent = spec;
+      liArray[index].textContent = spec;
     }
   });
 };
+
 let selectedComputer;
+
 const handleComputerSelect = (event) => {
   Promise.resolve(getItemByTitle(event.target.value))
     .then((data) => {
@@ -72,19 +75,19 @@ const handleWork = () => {
   payInput.value = currentPay + salary;
 };
 
-//general methods
-const toggleItem = (element) => {
+//general methods for accounts and loans
+const toggleElement = (element) => {
   element.classList.toggle("hide");
 };
 
 const toggleLoanInput = () => {
   let loanBalance = document.querySelector(".loans");
-  toggleItem(loanBalance);
+  toggleElement(loanBalance);
 };
 
 const toggleRepayBtn = () => {
   let repayBtn = document.querySelector(".repay-btn");
-  toggleItem(repayBtn);
+  toggleElement(repayBtn);
 };
 
 const toggleModal = () => {
@@ -92,6 +95,14 @@ const toggleModal = () => {
   modal.classList.toggle("hide");
   window.removeEventListener("click", hideModal);
   window.removeEventListener("keydown", submitLoanByKeydown);
+};
+
+const hideModal = (event) => {
+  const modalClasses = Array.from(event.target.classList);
+  const isModal = modalClasses.filter((cl) => cl === "modal");
+  if (isModal.length === 0) {
+    toggleModal();
+  }
 };
 
 const handleLoanRequest = () => {
@@ -172,14 +183,6 @@ const submitLoanByKeydown = (event) => {
   return;
 };
 
-const hideModal = (event) => {
-  const modalClasses = Array.from(event.target.classList);
-  const isModal = modalClasses.filter((cl) => cl === "modal");
-  if (isModal.length === 0) {
-    toggleModal();
-  }
-};
-
 const handleBankTransfer = () => {
   let newBankBalance;
   let loanBalance = parseInt(loan.value);
@@ -239,6 +242,7 @@ const buyComputer = () => {
   }
   let newBalance = parseInt(bankAccount.value) - parseInt(price);
   bankAccount.value = newBalance;
+  numberOfComputers += 1;
   alert(`Congratulations! 
   You just bought this computer: ${selectedComputer}
   `);
