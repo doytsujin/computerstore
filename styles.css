@@ -109,15 +109,34 @@ input {
 
 .modal-container {
   position: absolute;
+  top: 4em;
+  left: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 15em;
-  width: 15em;
+  height: 26em;
+  width: 100%;
+  border-radius: 5px;
   background-color: var(--text-dark);
   color: var(--text-light);
   z-index: 1;
+  animation: modalAnimate .4s ease-in-out 1 both;
+}
+
+@keyframes modalAnimate {
+  from {top: calc(1px - 26em)}
+  to {top: 0}
+}
+.modal-increment-btn {
+  font-size: x-large;
+  padding: 0em .3em;
+  border-radius: 0%;
+  margin: 0;
+}
+
+.modal-h1 {
+  margin-bottom: 5em;
 }
 .show {
   display: block;

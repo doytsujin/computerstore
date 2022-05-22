@@ -33,8 +33,12 @@
                 kr
               </div>
               <div class="hide modal modal-container">
-                <label class="modal modal-label" for="">Type in amount:</label>
-                <input class="modal modal-loan-input" type="number" name="loanInput" id="loanInput" >
+                <h1 class="modal modal-h1">Loan request:</h1>
+                <label class="modal modal-label" for="">Amount:</label>
+                <div class="flex modal">
+                  <input class="modal modal-loan-input" type="number" name="loanInput" id="loanInput" step="50" value="0">
+                  <button class="modal modal-increment-btn">+</button>
+                </div>
                 <button class="modal modal-cta-btn cta-btn">Submit!</button>
               </div>
             </section>

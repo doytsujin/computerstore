@@ -158,7 +158,12 @@ const zeroLoanError = () => {
   alert(`you tried to take out a loan of 0 kr. 
   you need to enter an amount`);
 };
-
+// set loan
+const handleIncrementLoan = () => {
+  const modalInput = document.querySelector('.modal-loan-input');
+  let currentLoanInput = parseInt(modalInput.value);
+  modalInput.value = currentLoanInput + 50;
+} 
 //get Loan
 
 const submitLoan = () => {
@@ -259,6 +264,7 @@ const buyComputer = () => {
 };
 
 //event listeners
+document.querySelector('.modal-increment-btn').addEventListener('click',handleIncrementLoan);
 document.querySelector(".buy-btn").addEventListener("click", buyComputer);
 document.querySelector(".repay-btn").addEventListener("click", repayLoanClick);
 document.querySelector(".modal-cta-btn").addEventListener("click", submitLoan);
