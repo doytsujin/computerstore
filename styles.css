@@ -17,6 +17,8 @@ body {
   min-height: 100vh;
   width: 100%;
   background-color: var(--bg-primary-color);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
 }
 
 .main-header {
@@ -43,7 +45,7 @@ main {
 
 .container {
   margin: 0 auto;
-  width: 80%;
+  width: 85%;
 }
 .card-container {
   height: 80%;
@@ -56,23 +58,24 @@ main {
 .grid {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: .5em;
   place-items: center;
+  margin-bottom: 2em;
 }
 article,
 .laptop-display-section {
   background-color: var(--bg-secondary-color);
   color: var(--text-dark);
-  height: 240px;
 }
 article {
-  width: 220px;
+  height: 260px;
+  width: 240px;
   border-radius: 10px;
 }
 .laptop-display-section {
   width: 100%;
-  height: 200px;
+  height: fit-content;
   justify-content: center;
 }
 .flex {
@@ -174,7 +177,7 @@ button:active {
   transform-style: preserve-3d;
 }
 
-h5 {
+h4 {
   margin: 1em auto;
 }
 .specs {
@@ -198,8 +201,11 @@ h5 {
   height: 7em;
 }
 .laptop-description-container {
-  width: 12em;
+  width: 14em;
 }
 .price {
   margin: 0 auto 0.5em;
+}
+.description {
+  margin: 0;
 }
