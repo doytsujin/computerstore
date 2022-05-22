@@ -1,9 +1,12 @@
+let selectedComputer;
+
 const FetchData = async () => {
   const resp = await fetch(
     "https://noroff-komputer-store-api.herokuapp.com/computers"
   );
   const data = await resp.json();
   insertComputerData(data[0]); //first computer selected by default.
+  selectedComputer = data[0].title;
   return data;
 };
 
@@ -57,7 +60,6 @@ const insertComputerData = (data) => {
   });
 };
 
-let selectedComputer;
 
 const handleComputerSelect = (event) => {
   Promise.resolve(getItemByTitle(event.target.value))
@@ -240,13 +242,15 @@ const failedBuyAttempt = (price) => {
   `);
 };
 const buyComputer = () => {
-  const price = document.querySelector(".price").value;
+  const priceString = document.querySelector(".price").textContent;
+  let price = priceString.split(' ')[0]; //remove NOK from string.
 
   if (price > bankAccount.value) {
     failedBuyAttempt(price);
     return;
   }
   let newBalance = parseInt(bankAccount.value) - parseInt(price);
+  console.log(newBalance, typeof newBalance);
   bankAccount.value = newBalance;
   numberOfComputers += 1;
   alert(`Congratulations! 
