@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="./script.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="main-header">
+      <nav>
+        <h2 class="main-headline">Komputer Store</h2>
+      </nav>
+    </header>
+    <main class="container flex">
+      <section class="main-section grid">
+        <article class="bank-section">
+          <div class="container card-container">
+            <section>
+              <header>
+                <h1>Joe Banker</h1>
+              </header>
+              <div class="flex">
+                <label for="bankAccount">balance:</label>
+                <input type="number" name="bankAccount" id="bankAccount" value="0" disabled />
+                kr
+              </div>
+              <div class="flex loans hide">
+                <label for="loanAccount">loan:</label>
+                <input type="number" name="loanAccount" id="loanAccount" value="0" disabled />
+                kr
+              </div>
+              <div class="hide modal modal-container">
+                <label class="modal modal-label" for="">Type in amount:</label>
+                <input class="modal modal-loan-input" type="number" name="loanInput" id="loanInput" >
+                <button class="modal modal-cta-btn cta-btn">Submit!</button>
+              </div>
+            </section>
+            <button class="loan-btn">Get a loan</button>
+          </div>
+        </article>
+        <article class="work-section">
+          <div class="container card-container">
+            <section>
+              <header>
+                <h1>Work</h1>
+              </header>
+              <div class="flex">
+                <label for="pay">Pay:</label>
+                <input type="number" name="pay" id="pay" value="0" disabled />
+                kr
+              </div>
+            </section>
+            <button class="hide repay-btn cta-btn">Repay Loan</button>
+            <div class="flex">
+              <button class="bank-btn">Bank</button>
+              <button class="work-btn">Work</button>
+            </div>
+          </div>
+        </article>
+        <article class="Laptop-section">
+          <div class="container card-container">
+            <header>
+              <h1>Laptops</h1>
+            </header>
+            <label for="select-computer"></label>
+            <select id="select-computer" name="select-computer"></select>
+            <h5>Features:</h5>
+            <ul class="specs">
+              <li>Lorem, ipsum dolor.</li>
+              <li>Lorem, ipsum.</li>
+              <li>Lorem, ipsum dolor.</li>
+              <li>Lorem, ipsum dolor.</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+      <section class="laptop-display-section">
+        <header>
+          <h1 class="h1-big">Super Computah</h1>
+        </header>
+        <div class="container grid">
+          <div class="img-container flex">
+            <img class="computer-image" src="https://noroff-komputer-store-api.herokuapp.com/assets/images/1.png" alt="computer">
+          </div>
+          <div class="laptop-description-container flex">
+            <p class="description">
+              Lorem ipsum dolor sit amet. Lorem ipsum dolor sit, amet
+              consectetur adipisicing elit.
+            </p>
+          </div>
+          <div class="price-cta-container flex">
+            <h1 class="price">Price</h1>
+            <button class="buy-btn cta-btn">Buy Now!</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
