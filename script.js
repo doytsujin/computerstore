@@ -38,12 +38,18 @@ const insertComputerData = (data) => {
   const priceEl = document.querySelector(".price");
   const liArray = document.querySelector(".specs").children;
 
-  const { title, description, specs, price, image } = data;
+  const {id, title, description, specs, price, image } = data;
 
   titleEl.textContent = title;
-  imgEl.setAttribute("src",`https://noroff-komputer-store-api.herokuapp.com/${image}`);
   descriptionEl.textContent = description;
   priceEl.textContent = `${price} NOK`;
+
+  if (id===5) {
+    imgEl.setAttribute("src",`https://noroff-komputer-store-api.herokuapp.com/assets/images/5.png`);
+  } else {
+    imgEl.setAttribute("src",`https://noroff-komputer-store-api.herokuapp.com/${image}`);
+  }
+
   specs.some((spec, index) => {
     if (index <= 3) {
       liArray[index].textContent = spec;
