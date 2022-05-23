@@ -1,4 +1,11 @@
-import {splitString, toggleElement, maxLoanError, noMoneyError, zeroLoanError, numberOfLoansError} from './Methods.js';
+import {
+  splitString,
+  toggleElement,
+  maxLoanError,
+  noMoneyError,
+  zeroLoanError,
+  numberOfLoansError,
+} from "./Methods.js";
 let selectedComputer;
 
 const FetchData = async () => {
@@ -42,16 +49,22 @@ const insertComputerData = (data) => {
   const priceEl = document.querySelector(".price");
   const liArray = document.querySelector(".specs").children;
 
-  const {id, title, description, specs, price, image } = data;
+  const { id, title, description, specs, price, image } = data;
 
   titleEl.textContent = title;
   descriptionEl.textContent = description;
   priceEl.textContent = `${price} NOK`;
 
-  if (id===5) {
-    imgEl.setAttribute("src",`https://noroff-komputer-store-api.herokuapp.com/assets/images/5.png`);
+  if (id === 5) {
+    imgEl.setAttribute(
+      "src",
+      `https://noroff-komputer-store-api.herokuapp.com/assets/images/5.png`
+    );
   } else {
-    imgEl.setAttribute("src",`https://noroff-komputer-store-api.herokuapp.com/${image}`);
+    imgEl.setAttribute(
+      "src",
+      `https://noroff-komputer-store-api.herokuapp.com/${image}`
+    );
   }
 
   specs.some((spec, index) => {
@@ -87,37 +100,32 @@ const handleWork = () => {
 
 const toggleLoanInput = () => {
   let loanBalance = document.querySelector(".loans");
-  toggleElement(loanBalance, 'hide');
-}
+  toggleElement(loanBalance, "hide");
+};
 
 const toggleRepayBtn = () => {
   let repayBtn = document.querySelector(".repay-btn");
-  toggleElement(repayBtn, 'hide');
-}
+  toggleElement(repayBtn, "hide");
+};
 
 const toggleModal = () => {
-
   let modalClasses = Array.from(modal.classList);
-  let includesHide = modalClasses.includes('hide');
-  let includesAnimateOut = modalClasses.includes('animate-modal-out');
+  let includesHide = modalClasses.includes("hide");
+  let includesAnimateOut = modalClasses.includes("animate-modal-out");
 
   if (includesHide) {
-    alert('in')
-    toggleElement(modal, 'hide');
-    
+    toggleElement(modal, "hide");
     if (includesAnimateOut) {
-      toggleElement(modal, 'animate-modal-out');
+      toggleElement(modal, "animate-modal-out");
     }
-    toggleElement(modal, 'animate-modal');
-    
-  }  else {
-    alert('out')
-    toggleElement(modal,'animate-modal', 'animate-modal-out'); //animate out class - make it.
+    toggleElement(modal, "animate-modal");
+  } else {
+    toggleElement(modal, "animate-modal", "animate-modal-out"); //animate out class - make it.
     setTimeout(() => {
-      toggleElement(modal, 'hide');
+      toggleElement(modal, "hide");
     }, 1000);
   }
-  
+
   window.removeEventListener("click", hideModal);
   window.removeEventListener("keydown", submitLoanByKeydown);
 };
@@ -148,13 +156,12 @@ const removeLoan = () => {
   numberOfLoans -= 1;
 };
 
-
 // set loan
 // document.querySelector('.modal-label').textContent= `Amount [kr]:`
 const handleIncrementLoan = () => {
   let currentLoanInput = parseInt(splitString(modalInput.value));
   modalInput.value = `${currentLoanInput + 50} kr`;
-} 
+};
 //get Loan
 
 const submitLoan = () => {
@@ -173,9 +180,8 @@ const submitLoan = () => {
     maxLoanError(bankAccountBalance, requestedLoan, maxLoan);
   } else {
     bankAccount.value = bankAccountBalance + requestedLoan;
-    loan.value = requestedLoan * (-1);
-    
-    console.log(requestedLoan, typeof requestedLoan);
+    loan.value = requestedLoan * -1;
+
     toggleLoanInput();
     toggleRepayBtn();
     numberOfLoans += 1;
@@ -192,9 +198,7 @@ const submitLoanByKeydown = (event) => {
 
 const handleBankTransfer = () => {
   let newBankBalance;
-  let loanBalance = parseInt(loan.value) *(-1);
-  console.log(typeof loanBalance, loanBalance);
-  
+  let loanBalance = parseInt(loan.value) * -1;
 
   if (numberOfLoans) {
     let saved = (parseInt(payInput.value) * 90) / 100;
@@ -214,13 +218,13 @@ const handleBankTransfer = () => {
 };
 
 const doLoanPayment = (downpayment) => {
-  let currentLoan = parseInt(loan.value) *(-1);
+  let currentLoan = parseInt(loan.value) * -1;
 
   if (downpayment >= currentLoan) {
     payInput.value = downpayment - currentLoan;
     loan.value = 0;
   } else {
-    loan.value = (currentLoan - downpayment) *(-1);
+    loan.value = (currentLoan - downpayment) * -1;
     payInput.value = 0;
   }
   if (parseInt(loan.value) === 0) {
@@ -243,20 +247,16 @@ const failedBuyAttempt = (price) => {
   `);
 };
 
-
 const buyComputer = () => {
   const priceString = document.querySelector(".price").textContent;
   let price = parseInt(splitString(priceString)); //remove NOK from string.
   let bankAccountBalance = parseInt(bankAccount.value);
-
-  console.log(typeof bankAccountBalance)
 
   if (price > bankAccountBalance) {
     failedBuyAttempt(price);
     return;
   }
   let newBalance = bankAccountBalance - price;
-  console.log(newBalance, typeof newBalance);
   bankAccount.value = newBalance;
   numberOfComputers += 1;
   alert(`Congratulations! 
@@ -265,7 +265,7 @@ const buyComputer = () => {
 };
 
 //event listeners
-document.querySelector('.modal-increment-btn').addEventListener('click',handleIncrementLoan);
+document.querySelector(".modal-increment-btn").addEventListener("click", handleIncrementLoan);
 document.querySelector(".buy-btn").addEventListener("click", buyComputer);
 document.querySelector(".repay-btn").addEventListener("click", repayLoanClick);
 document.querySelector(".modal-cta-btn").addEventListener("click", submitLoan);
