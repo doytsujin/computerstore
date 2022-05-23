@@ -140,7 +140,7 @@ const hideModal = (event) => {
 
 const handleLoanRequest = () => {
   if (numberOfLoans) {
-    numberOfLoansError();
+    numberOfLoansError(numberOfLoans, numberOfComputers);
     return;
   }
   toggleModal();

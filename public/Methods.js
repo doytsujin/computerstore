@@ -17,11 +17,11 @@ export const maxLoanError = (loan, loanRequest, max) => {
   `);
 }
 
-export const numberOfLoansError = (numberOfLoans, numberOfComputers) => {
+export const numberOfLoansError = (loans, computers) => {
   alert(`
   you cannot get more than 1 loan. Shame on you!
-  you have ${numberOfLoans} loan already.
-  your have ${numberOfComputers} computers.
+  you have ${loans} loan already.
+  your have ${computers} computers.
   Buy a computer!
   `);
 }
