@@ -101,7 +101,7 @@ const toggleModal = () => {
   if (modalClasses.includes('hide')) {
     toggleElement(modal, 'hide', 'animate-modal');
   } else {
-    toggleElement(modal, 'animate-modal'); //animate out class - make it.
+    toggleElement(modal, 'animate-modal-out'); //animate out class - make it.
     setTimeout(() => {
       toggleElement(modal, 'hide');
     }, 1000);

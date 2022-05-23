@@ -126,10 +126,18 @@ input {
 .animate-modal {
   animation: modalAnimation 1s ease-in-out 1 both;
 }
+.animate-modal-out {
+  animation: modalAnimationOut 1s ease-in-out 1 both;
+}
 
 @keyframes modalAnimation {
   from {top: calc(1px - 26em)}
   to {top: 0}
+}
+@keyframes modalAnimationOut {
+  from {top: 0}
+  to {top: calc(1px - 26em)}
+  
 }
 .modal-increment-btn {
   font-size: x-large;
