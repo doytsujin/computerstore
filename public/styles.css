@@ -110,6 +110,7 @@ input {
 .modal-container {
   position: absolute;
   top: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -131,11 +132,12 @@ input {
 
 @keyframes modalAnimation {
   from {transform: translate3d(0,-26em,0);}
-  to {transform: translate3d(0,-26em,0);}
+  to {transform: translate3d(0,0,0);}
 }
 @keyframes modalAnimationOut {
-  from {top: 0}
-  to {top: calc(1px - 26em)}
+  from {transform: translate3d(0,0,0);}
+  to {transform: translate3d(0,-26em,0);}
+  
   
 }
 .modal-increment-btn {
