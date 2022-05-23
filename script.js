@@ -98,10 +98,21 @@ const toggleRepayBtn = () => {
 const toggleModal = () => {
 
   let modalClasses = Array.from(modal.classList);
-  if (modalClasses.includes('hide')) {
-    toggleElement(modal, 'hide', 'animate-modal');
-  } else {
-    toggleElement(modal, 'animate-modal-out'); //animate out class - make it.
+  let includesHide = modalClasses.includes('hide');
+  let includesAnimateOut = modalClasses.includes('animate-modal-out');
+
+  if (includesHide) {
+    alert('in')
+    toggleElement(modal, 'hide');
+    
+    if (includesAnimateOut) {
+      toggleElement(modal, 'animate-modal-out');
+    }
+    toggleElement(modal, 'animate-modal');
+    
+  }  else {
+    alert('out')
+    toggleElement(modal,'animate-modal', 'animate-modal-out'); //animate out class - make it.
     setTimeout(() => {
       toggleElement(modal, 'hide');
     }, 1000);
