@@ -137,8 +137,6 @@ input {
 @keyframes modalAnimationOut {
   from {transform: translate3d(0,0,0);}
   to {transform: translate3d(0,-26em,0);}
-  
-  
 }
 .modal-increment-btn {
   font-size: x-large;
@@ -186,7 +184,7 @@ select:hover {
   width: 13em;
 }
 .cta-btn {
-  border: none;
+  border: 1px solid var(--bg-cta-color);
   background-color: var(--bg-cta-color);
   color: var(--text-light);
   width: 10em;
@@ -194,7 +192,6 @@ select:hover {
 .cta-btn:hover {
   background-color: var(--text-light);
   color: var(--bg-cta-color);
-  border: 1px solid var(--bg-cta-color);
   opacity: 1;
 }
 button:hover {
