@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <script defer src="./script.js"></script>
+    <script type="module" defer src="./script.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -34,9 +34,9 @@
               </div>
               <div class="hide modal modal-container">
                 <h1 class="modal modal-h1">Loan request:</h1>
-                <label class="modal modal-label" for="">Amount:</label>
+                <label class="modal modal-label" for=""></label>
                 <div class="flex modal">
-                  <input class="modal modal-loan-input" type="number" name="loanInput" id="loanInput" step="50" value="0">
+                  <input class="modal modal-loan-input" type="text" name="loanInput" id="loanInput" step="50" value="0 kr">
                   <button class="modal modal-increment-btn">+</button>
                 </div>
                 <button class="modal modal-cta-btn cta-btn">Submit!</button>
